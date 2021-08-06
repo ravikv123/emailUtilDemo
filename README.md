@@ -34,8 +34,7 @@ CC list and BCC are optional.
 "emailBody": "EmailBody"
 }
 ### Sample Response JSON
-#### Success Response
- Success Response
+#### Success Response   
 {
 "statusMessage": "Email sent successfully"
 }
