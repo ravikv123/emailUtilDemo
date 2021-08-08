@@ -48,7 +48,6 @@ public class EmailUtilDemoControllerTest {
 		EmailMessageDTO requestJson = getSucessReqJson();
 		String requestjsonStr = new ObjectMapper().writeValueAsString(requestJson);
 		Mockito.doNothing().when(emailService).sendMail(Mockito.any(EmailMessageDTO.class));		
-		System.out.println(mockMvc.toString());
 		this.mockMvc.perform(post("/email/message").content(requestjsonStr).header(HttpHeaders.CONTENT_TYPE, MediaType.APPLICATION_JSON))
 		.andExpect(status().isOk()).andExpect(jsonPath("$.statusMessage").value("Email Sent Successfully"));
 	}
@@ -59,7 +58,6 @@ public class EmailUtilDemoControllerTest {
 		EmailMessageDTO requestJson = getFailReqJson1();
 		String requestjsonStr = new ObjectMapper().writeValueAsString(requestJson);
 		Mockito.doNothing().when(emailService).sendMail(Mockito.any(EmailMessageDTO.class));		
-		System.out.println(mockMvc.toString());
 		this.mockMvc.perform(post("/email/message").content(requestjsonStr).header(HttpHeaders.CONTENT_TYPE, MediaType.APPLICATION_JSON))
 		.andExpect(status().is4xxClientError());
 	}
@@ -70,7 +68,6 @@ public class EmailUtilDemoControllerTest {
 		EmailMessageDTO requestJson = getFailReqJson2();
 		String requestjsonStr = new ObjectMapper().writeValueAsString(requestJson);
 		Mockito.doNothing().when(emailService).sendMail(Mockito.any(EmailMessageDTO.class));		
-		System.out.println(mockMvc.toString());
 		this.mockMvc.perform(post("/email/message").content(requestjsonStr).header(HttpHeaders.CONTENT_TYPE, MediaType.APPLICATION_JSON))
 		.andExpect(status().is4xxClientError());
 	}
