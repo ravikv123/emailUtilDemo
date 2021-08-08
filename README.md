@@ -8,10 +8,19 @@ The CLient/response will see if mail is sent successfully or error in sending ma
 Java with Springboot is used to implement the functionality.
 RestTemplete is used for calling the HTTP Request.
 
+
+## Testing/Deployment process
+1. Checkout code
+2. Modify the API Keys and from email as required
+3. run  - mvn install
+4. start the springboot application
+5. Application url: http://localhost:8080/email/message
+
 ## Adding new Email Client
 Implement EmailServiceClient interface , method sendMail.
 This service should throw CustomException in case of any validations errors or send mail errors
 Autowire the new client with next available qualifier number(eg: service1, service2 etc.,)
+
 ## Implementation
 To List (email and name), Subject and emailBody is Mandatory. 
 CC list and BCC are optional.
@@ -49,5 +58,5 @@ CC list and BCC are optional.
 ## logging
 logging is not implemented for the functionality
 
-## Test Case
+## Test Case scenarios 
 [TestCases](docs/testCases.docx)
