@@ -16,7 +16,7 @@ Autowire the new client with next available qualifier number(eg: service1, servi
 To List (email and name), Subject and emailBody is Mandatory. 
 CC list and BCC are optional.
 
-    ### JSON Structure:
+    ### Request JSON Structure:
     key       -    Definition
     --------------------------
     to        -   Array of email and name
@@ -34,7 +34,8 @@ CC list and BCC are optional.
 "emailBody": "EmailBody"
 }
 ### Sample Response JSON
-#### Success Response   
+#### Success Response
+ Success Response
 {
 "statusMessage": "Email sent successfully"
 }
@@ -48,3 +49,5 @@ CC list and BCC are optional.
 ## logging
 logging is not implemented for the functionality
 
+## Test Case
+[TestCases](docs/testCases.docx)

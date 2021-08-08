@@ -31,7 +31,6 @@ public class EmailUtilDemoController {
 	 */
 	@PostMapping("/message")
 	public EmailResponse sendMail( @Valid @RequestBody EmailMessageDTO emailInfo) throws CustomException {
-		System.out.println(emailInfo);
 	   emailService.sendMail(emailInfo);
 	   EmailResponse resp = new EmailResponse();
 	   resp.setStatusMessage("Email Sent Successfully");

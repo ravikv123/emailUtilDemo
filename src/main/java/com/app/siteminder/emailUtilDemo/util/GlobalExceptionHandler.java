@@ -23,6 +23,7 @@ public class GlobalExceptionHandler {
   public ResponseEntity<EmailResponse> handleMethodArgumentNotValidException( MethodArgumentNotValidException exception){
 	  EmailResponse errResp = new EmailResponse();
 	  errResp.setErrorMessage(exception.getFieldErrors().stream().map(a->a.getField()+" -> "+a.getDefaultMessage()).collect(Collectors.toList()));
+	  errResp.setErrorMessage(errResp.getErrorMessage().stream().distinct().collect(Collectors.toList()));
 	  return ResponseEntity.status(HttpStatus.BAD_REQUEST).body(errResp);	  
   }
 
@@ -56,7 +57,6 @@ public class GlobalExceptionHandler {
 	  ArrayList al = new ArrayList();
 	  al.add(exception.getLocalizedMessage());
 	  errResp.setErrorMessage(al);
-	  System.out.println("Exception");
 	  return ResponseEntity.status(HttpStatus.INTERNAL_SERVER_ERROR).body(errResp);	  
   }
 

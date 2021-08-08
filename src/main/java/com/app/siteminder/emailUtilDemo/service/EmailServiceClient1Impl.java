@@ -34,8 +34,8 @@ public class EmailServiceClient1Impl implements EmailServiceClient {
 		
 		emailInfo.setFrom(mailgunFrom);
 		String vars = "?from="+emailInfo.getFrom()+"&to="+emailInfo.getTo().stream().map(email->email.getEmail()).collect(Collectors.joining(","))
-				+((emailInfo.getCc().size() > 0)?"&cc="+(emailInfo.getCc().stream().map(email->email.getEmail()).collect(Collectors.joining(","))):null)
-				+((emailInfo.getBcc().size() > 0)?"&bcc="+(emailInfo.getBcc().stream().map(email->email.getEmail()).collect(Collectors.joining(","))):null)
+				+((emailInfo.getCc() != null && emailInfo.getCc().size() > 0)?"&cc="+(emailInfo.getCc().stream().map(email->email.getEmail()).collect(Collectors.joining(","))):null)
+				+((emailInfo.getBcc() != null && emailInfo.getBcc().size() > 0)?"&bcc="+(emailInfo.getBcc().stream().map(email->email.getEmail()).collect(Collectors.joining(","))):null)
 				+"&subject="+emailInfo.getSubject()+"&text="+emailInfo.getEmailBody();
 	    emailUtil.sendMail(url+vars,mailgunApiKey, emailInfo,"server1");
 

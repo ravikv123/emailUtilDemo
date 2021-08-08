@@ -1,17 +1,11 @@
 package com.app.siteminder.emailUtilDemo.service;
 
 import java.lang.reflect.Field;
-import java.util.stream.Collectors;
-
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Qualifier;
-import org.springframework.beans.factory.annotation.Value;
 import org.springframework.stereotype.Service;
-import org.springframework.test.util.ReflectionTestUtils;
-
 import com.app.siteminder.emailUtilDemo.dto.EmailMessageDTO;
 import com.app.siteminder.emailUtilDemo.util.CustomException;
-import com.app.siteminder.emailUtilDemo.util.EmailHttpUtil;
 
 
 /**
@@ -36,11 +30,11 @@ public class EmailServiceImpl implements EmailService {
 	@Override
 	public void sendMail(EmailMessageDTO emailInfo) throws CustomException {
 		
-			boolean isEnd = true;
+			boolean isEnd = false;
 			int currntNum = 1;
 			CustomException exc = new CustomException();
 			Class<?> thisClass = this.getClass();
-			while(isEnd)
+			while(!isEnd)
 			{
 				try
 				{
@@ -49,12 +43,12 @@ public class EmailServiceImpl implements EmailService {
 					{
 						EmailServiceClient obj = (EmailServiceClient)(fld.get(this));
 						obj.sendMail(emailInfo);
-						isEnd = false;
+						isEnd = true;
 					}
 				}
 				catch(NoSuchFieldException | IllegalArgumentException | IllegalAccessException e)
 				{
-					isEnd = false;
+					isEnd = true;
 					throw exc;
 
 				}
