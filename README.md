@@ -50,4 +50,4 @@ CC list and BCC are optional.
 logging is not implemented for the functionality
 
 ## Test Case
-<a href="docs/testCases.docx">TestCases</a>
+[TestCases](docs/testCases.docx)
