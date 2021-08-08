@@ -2,7 +2,7 @@ Email Utility
 ============
 ## EMail Util 
 The application provides an abstraction between two different email service providers. If one of  the services goes down, the service can quickly failover to a different provider without affecting the customers. 
-The CLient/response will see if mail is sent successfully or error in sending mail.
+The Client/response contains if mail is sent successfully or list of errors in processing.
 
 ## Techinical Stack
 Java with Springboot is used to implement the functionality.
@@ -17,11 +17,16 @@ RestTemplete is used for calling the HTTP Request.
 5. Application url: http://localhost:8080/email/message
 
 ## Adding new Email Client
+2 mail servers are implemented, if first goes down or return error, the application will automatically switch to second one.
+
 Implement EmailServiceClient interface , method sendMail.
 This service should throw CustomException in case of any validations errors or send mail errors
 Autowire the new client with next available qualifier number(eg: service1, service2 etc.,)
 
+
+
 ## Implementation
+
 To List (email and name), Subject and emailBody is Mandatory. 
 CC list and BCC are optional.
 
